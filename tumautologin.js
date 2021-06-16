@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         TUM auto login
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  auto click tum login
 // @author       DerKleineLi
-// @match        https://www.moodle.tum.de/login/index.php
+// @match        https://www.moodle.tum.de/*
 // @match        https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/
 // @match        https://login.tum.de/idp/profile/SAML2/Redirect/*
 // @icon         https://www.google.com/s2/favicons?domain=tum.de
@@ -13,7 +13,7 @@
 var host = location.host;
 var paras;
 var username = "你的用户名" //修改为你的用户名 change this to your username
-var password = "你的密码"  //修改为你的密码 change this to your password
+var password = "你的密码" //修改为你的密码 change this to your password
 var fc = function(){ //campus.tum.de
     switch(document.getElementsByClassName("ca-header-page-title ng-star-inserted")[0].outerText){
         case "Anmelden": //登录页
@@ -48,6 +48,14 @@ var fl = function(){ //login.tum.de
 var f=function(){
    switch (host) {
         case 'www.moodle.tum.de':
+            paras = document.getElementsByTagName('a');
+
+            for(i=0;i<paras.length;i++){
+                if(paras[i].outerText=="Mit TUM-Kennung"){
+                    paras[i].click()
+                }
+            }
+
             paras = document.getElementsByClassName('icon-arrow-right');
 
             for(var i=0;i<paras.length;i++){
