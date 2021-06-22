@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         TUM auto login
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  auto click tum login
 // @author       DerKleineLi
 // @match        https://www.moodle.tum.de/*
 // @match        https://campus.tum.de/tumonline/ee/ui/ca2/app/desktop/
-// @match        https://login.tum.de/idp/profile/SAML2/Redirect/*
+// @match        https://login.tum.de/idp/profile/SAML2/*
 // @icon         https://www.google.com/s2/favicons?domain=tum.de
 // @grant        none
 // ==/UserScript==
