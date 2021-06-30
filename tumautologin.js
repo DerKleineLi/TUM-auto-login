@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TUM auto login
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  auto click tum login
 // @author       DerKleineLi
 // @match        https://www.moodle.tum.de/*
@@ -17,8 +17,14 @@ var password = "你的密码" //修改为你的密码 change this to your passwo
 var fc = function(){ //campus.tum.de
     switch(document.getElementsByClassName("ca-header-page-title ng-star-inserted")[0].outerText){
         case "Anmelden": //登录页
-            document.getElementById('id_brm-pm-dtop_login_uname_input').value = username;
-            document.getElementById('id_brm-pm-dtop_login_pw_input').value = password;
+            var evt = document.createEvent('HTMLEvents');
+            evt.initEvent('input', true, true);
+            var t = document.getElementById('id_brm-pm-dtop_login_uname_input')
+            t.value = username;
+            t.dispatchEvent(evt)
+            t = document.getElementById('id_brm-pm-dtop_login_pw_input')
+            t.value = password;
+            t.dispatchEvent(evt)
             document.getElementById('id_brm-pm-dtop_login_submitbutton').click();
             break
         case "Aktuelle Informationen": //消息页
